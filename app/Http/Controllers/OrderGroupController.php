@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderGroupRequest;
 use App\Models\Dish;
 use App\Models\OrderGroup;
+use App\Models\Variant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -15,7 +18,14 @@ class OrderGroupController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('OrderGroups/Index');
+        $orderGroups = OrderGroup::select([
+            'id',
+            'apply_invoice',
+            'status',
+            'total'
+        ])->get();
+
+        return Inertia::render('OrderGroups/Index', compact('orderGroups'));
     }
 
     /**
@@ -36,9 +46,40 @@ class OrderGroupController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreOrderGroupRequest $request)
     {
-        //
+        DB::beginTransaction();
+
+        $orderGroup = OrderGroup::create([
+            ...$request->only([
+                'apply_invoice',
+                'delivery_type',
+                'payment_method'
+            ]),
+            'total' => 0
+        ]);
+
+        $total = 0;
+        
+        foreach ($request->validated('order_items') as $requestedOrderItem) {
+            $variant = Variant::findOrFail($requestedOrderItem['variant_id']);
+
+            $subtotal = $requestedOrderItem['quantity'] * $variant->price;
+            $total += $subtotal;
+            
+            $orderGroup->orderItems()->create([
+                ...$requestedOrderItem,
+                'subtotal' => $subtotal
+            ]);
+        }
+
+        $orderGroup->update([
+            'total' => $total
+        ]);
+
+        DB::commit();
+
+        return to_route('order-groups.index');
     }
 
     /**

@@ -28,6 +28,18 @@ class OrderGroup extends Model
     ];
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'apply_invoice',
+        'total',
+        'delivery_type',
+        'payment_method'
+    ];
+
+    /**
      * The attributes that should be cast.
      *
      * @var array

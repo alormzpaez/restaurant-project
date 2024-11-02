@@ -13,7 +13,12 @@ export interface Variant {
 }
 
 export interface OrderGroup {
-
+    id: number;
+    apply_invoice: boolean;
+    delivery_type: OrderGroupDeliveryType;
+    payment_method: OrderGroupPaymentMethod;
+    status: OrderGroupStatus;
+    total: number;
 }
 
 export interface OrderItem {
@@ -29,6 +34,10 @@ export interface User {
     email: string;
     email_verified_at?: string;
 }
+
+export type OrderGroupDeliveryType = "residence"|"restaurant";
+export type OrderGroupPaymentMethod = "cash"|"card";
+export type OrderGroupStatus = "unfinished"|"finished"|"cancelled";
 
 export type PageProps<
     T extends Record<string, unknown> = Record<string, unknown>,
