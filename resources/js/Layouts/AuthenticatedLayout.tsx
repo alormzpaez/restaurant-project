@@ -65,7 +65,7 @@ export default function Authenticated({
                                     onClick={() => {
                                         setShowingNavigationDropdown(false);
                                     }}
-                                    href={route("dashboard")}
+                                    href={route("order-groups.create")}
                                 >
                                     <Sidebar.Item href="#" icon={GiNotebook}>
                                         Pedidos
