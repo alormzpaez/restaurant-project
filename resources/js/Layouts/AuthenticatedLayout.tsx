@@ -85,7 +85,7 @@ export default function Authenticated({
                                     onClick={() => {
                                         setShowingNavigationDropdown(false);
                                     }}
-                                    href={route("profile.edit")}
+                                    href={route("inventory-groups.index")}
                                 >
                                     <Sidebar.Item href="#" icon={MdInventory}>
                                         Inventarios

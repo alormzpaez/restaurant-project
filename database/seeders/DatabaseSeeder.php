@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Dish;
+use App\Models\Ingredient;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,12 +15,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(RoleAndPermissionSeeder::class);
         // User::factory(10)->create();
 
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Creating ingredients
+        Ingredient::create(['name' => 'Arrachera']);
+        Ingredient::create(['name' => 'Pollo']);
+        Ingredient::create(['name' => 'Chistorra']);
+        Ingredient::create(['name' => 'Pan Hambs.']);
+        Ingredient::create(['name' => 'Pan Bags.']);
+        Ingredient::create(['name' => 'Papas']);
+        Ingredient::create(['name' => 'Chuleta']);
+        Ingredient::create(['name' => 'Molida']);
+        Ingredient::create(['name' => 'Asada']);
+        Ingredient::create(['name' => 'Pastor']);
+        Ingredient::create(['name' => 'Fettuccine']);
+        Ingredient::create(['name' => 'Carne hambs.']);
 
         // Creating dishes and their variants
         Dish::create([

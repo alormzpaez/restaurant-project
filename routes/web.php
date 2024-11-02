@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InventoryGroupController;
 use App\Http\Controllers\OrderGroupController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -26,6 +27,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('order-groups', OrderGroupController::class)->only([
         'index', 'create', 'store'
+    ]);
+    Route::resource('inventory-groups', InventoryGroupController::class)->only([
+        'index', 'show'
     ]);
 });
 
