@@ -75,7 +75,7 @@ export default function Authenticated({
                                     onClick={() => {
                                         setShowingNavigationDropdown(false);
                                     }}
-                                    href={route("profile.edit")}
+                                    href={route("invoices.index")}
                                 >
                                     <Sidebar.Item href="#" icon={LiaFileInvoiceDollarSolid}>
                                         Facturas

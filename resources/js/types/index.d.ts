@@ -21,6 +21,25 @@ export interface OrderGroup {
     total: number;
 }
 
+export interface Invoice {
+    id: number;
+    order_group_id: number;
+    client: string;
+    rfc: string;
+    tax_domicile: string;
+    payment_mode: string;
+    tax_folio: string;
+    voucher_number: number;
+    voucher_date: string;
+    payment_method: InvoicePaymentMethod;
+    cfdi_date: string;
+    created_at: string;
+    updated_at: string;
+    subtotal: number;
+    iva: number;
+    total: number;
+}
+
 export interface OrderItem {
     quantity: number;
     variant_id: number;
@@ -110,6 +129,7 @@ export interface InventoryGroup {
 
 export type OrderGroupDeliveryType = "residence"|"restaurant";
 export type OrderGroupPaymentMethod = "cash"|"card";
+export type InvoicePaymentMethod = "cash"|"card";
 export type OrderGroupStatus = "unfinished"|"finished"|"cancelled";
 export type InventoryGroupType = "kitchen"|"pizza";
 

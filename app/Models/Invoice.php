@@ -18,6 +18,23 @@ class Invoice extends Model
         'payment_method' => self::CASH_PAYMENT_METHOD
     ];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'client',
+        'rfc',
+        'tax_domicile',
+        'payment_mode',
+        'tax_folio',
+        'voucher_number',
+        'voucher_date',
+        'payment_method',
+        'cfdi_date'
+    ];
+
     public function orderGroup(): BelongsTo
     {
         return $this->belongsTo(OrderGroup::class);

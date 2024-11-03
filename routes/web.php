@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InventoryGroupController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrderGroupController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('inventory-groups', InventoryGroupController::class)->only([
         'index', 'show'
     ]);
+    Route::resource('invoices', InvoiceController::class);
 });
 
 require __DIR__.'/auth.php';
