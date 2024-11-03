@@ -44,7 +44,8 @@ class StoreOrderGroupRequest extends FormRequest
             'order_items' => 'required|array',
             'order_items.*' => 'required|array',
             'order_items.*.quantity' => 'required|integer|numeric',
-            'order_items.*.variant_id' => 'required|integer|numeric'
+            'order_items.*.variant_id' => 'required|integer|numeric',
+            'client' => 'required|string'
         ];
     }
 }

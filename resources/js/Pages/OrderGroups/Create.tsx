@@ -24,12 +24,14 @@ function Create({
         apply_invoice: boolean,
         delivery_type: OrderGroupDeliveryType,
         payment_method: OrderGroupPaymentMethod,
-        order_items: OrderItem[]
+        order_items: OrderItem[],
+        client: string,
     }>({
         apply_invoice: false,
         delivery_type: "restaurant",
         payment_method: "cash",
-        order_items: []
+        order_items: [],
+        client: ""
     });
     
     useEffect(() => {

@@ -3,9 +3,11 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Dish;
+use App\Models\Invoice;
 use App\Models\OrderGroup;
 use App\Models\User;
 use App\Models\Variant;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Inertia\Testing\AssertableInertia;
@@ -91,8 +93,10 @@ class OrderGroupControllerTest extends TestCase
         );
     }
 
-    public function test_store(): void
+    public function test_store_restaurant(): void
     {
+        Carbon::setTestNow();
+
         Sanctum::actingAs(User::factory()->create());
 
         $variant1 = Variant::factory()->create([
@@ -106,7 +110,7 @@ class OrderGroupControllerTest extends TestCase
 
         $data = [
             'apply_invoice' => true,
-            'delivery_type' => OrderGroup::RESIDENCE_DELIVERY_TYPE,
+            'delivery_type' => OrderGroup::RESTAURANT_DELIVERY_TYPE,
             'payment_method' => OrderGroup::CARD_PAYMENT_METHOD,
             'order_items' => [
                 [
@@ -127,7 +131,8 @@ class OrderGroupControllerTest extends TestCase
                         'id' => 1
                     ]
                 ]
-            ]
+            ],
+            'client' => 'Client'
         ];
 
         $this->post(route('order-groups.store'), $data)
@@ -136,6 +141,18 @@ class OrderGroupControllerTest extends TestCase
 
         $orderGroup = OrderGroup::with('orderItems')->first();
 
+        $this->assertDatabaseCount('invoices', 1);
+        $this->assertDatabaseHas('invoices', [
+            'client' => $data['client'],
+            'rfc' => '',
+            'tax_domicile' => '',
+            'payment_mode' => '',
+            'tax_folio' => '',
+            'voucher_number' => 0,
+            'voucher_date' => now()->format('Y-m-d'),
+            'payment_method' => Invoice::CARD_PAYMENT_METHOD,
+            'cfdi_date' => now()->format('Y-m-d'),
+        ]);
         $this->assertDatabaseCount('order_groups', 1);
         $this->assertDatabaseCount('order_items', 2);
         $this->assertEquals($orderGroup->total, 250);

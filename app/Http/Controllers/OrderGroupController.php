@@ -77,6 +77,20 @@ class OrderGroupController extends Controller
             'total' => $total
         ]);
 
+        if ($request->validated('apply_invoice')) {
+            $orderGroup->invoice()->create([
+                'client' => $request->validated('client'),
+                'rfc' => '',
+                'tax_domicile' => '',
+                'payment_mode' => '',
+                'tax_folio' => '',
+                'voucher_number' => 0,
+                'voucher_date' => now(), 
+                'cfdi_date' => now(),
+                'payment_method' => $request->validated('payment_method')
+            ]);
+        }
+
         DB::commit();
 
         return to_route('order-groups.index');

@@ -19,13 +19,15 @@ export default function SaveCustomerInformationForm({
         apply_invoice: boolean,
         delivery_type: OrderGroupDeliveryType,
         payment_method: OrderGroupPaymentMethod,
-        order_items: OrderItem[]
+        order_items: OrderItem[],
+        client: string
     },
     setData: (data: {
         apply_invoice: boolean,
         delivery_type: OrderGroupDeliveryType,
         payment_method: OrderGroupPaymentMethod,
-        order_items: OrderItem[]
+        order_items: OrderItem[],
+        client: string
     }) => void
 }) {
     return (
@@ -82,16 +84,20 @@ export default function SaveCustomerInformationForm({
                         <span>Datos del cliente</span>
 
                         <div>
-                            <InputLabel htmlFor="name" value="Nombre" />
+                            <InputLabel htmlFor="client" value="Nombre" />
 
                             <TextInput
-                                id="name"
+                                id="client"
                                 className="block w-full mt-1"
-                                value={''}
-                                // onChange={(e) => setData('name', e.target.value)}
+                                value={data.client}
+                                onChange={(e) => {
+                                    setData({
+                                        ...data,
+                                        client: e.target.value
+                                    })
+                                }}
                                 required
-                                isFocused
-                                autoComplete="name"
+                                autoComplete="client"
                             />
                         </div>
                         <div>
@@ -100,7 +106,7 @@ export default function SaveCustomerInformationForm({
                             <TextInput
                                 id="address"
                                 className="block w-full mt-1"
-                                value={''}
+                                // value={''}
                                 // onChange={(e) => setData('name', e.target.value)}
                                 required
                                 autoComplete="address"
@@ -117,7 +123,7 @@ export default function SaveCustomerInformationForm({
                                 placeholder="Escribe algo..."
                                 required
                                 rows={4}
-                                value={''}
+                                // value={''}
                             />
                         </div>
                         <div>
@@ -131,7 +137,7 @@ export default function SaveCustomerInformationForm({
                                 placeholder="Escribe algo..."
                                 required
                                 rows={4}
-                                value={''}
+                                // value={''}
                             />
                         </div>
                     </Card>
@@ -140,16 +146,21 @@ export default function SaveCustomerInformationForm({
                         <span>Datos del cliente</span>
 
                         <div>
-                            <InputLabel htmlFor="name" value="Nombre" />
+                            <InputLabel htmlFor="client2" value="Nombre" />
 
                             <TextInput
-                                id="name"
+                                id="client2"
+                                type='text'
                                 className="block w-full mt-1"
-                                value={''}
-                                // onChange={(e) => setData('name', e.target.value)}
+                                value={data.client}
+                                onChange={(e) => {
+                                    setData({
+                                        ...data,
+                                        client: e.target.value
+                                    })
+                                }}
                                 required
-                                isFocused
-                                autoComplete="name"
+                                autoComplete="client"
                             />
                         </div>
                     </Card>
