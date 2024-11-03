@@ -40,6 +40,7 @@ function Create({
 
     const addOrderItem = (variant: Variant, quantity: number) => {
         const orderItem: OrderItem = {
+            id: 0,
             quantity,
             subtotal: 0,
             variant_id: variant.id,

@@ -19,6 +19,8 @@ export interface OrderGroup {
     payment_method: OrderGroupPaymentMethod;
     status: OrderGroupStatus;
     total: number;
+    orderItems: OrderItem[];
+    invoice: Invoice;
 }
 
 export interface Invoice {
@@ -41,6 +43,7 @@ export interface Invoice {
 }
 
 export interface OrderItem {
+    id: number;
     quantity: number;
     variant_id: number;
     subtotal: number;

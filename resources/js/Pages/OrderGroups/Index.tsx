@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { OrderGroup, PageProps } from "@/types";
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 import { Badge, Button, Card, Navbar } from 'flowbite-react';
 import { ReactElement } from "react";
 
@@ -57,7 +57,9 @@ function Index({
                                                         Cancelada
                                                     </Badge>
                                                 )}
-                                                <Button size="sm">Ver</Button>
+                                                <Button size="sm" onClick={() => {
+                                                    router.visit(route("order-groups.show", orderGroup.id))
+                                                }}>Ver</Button>
                                                 <h5 className="tracking-tight text-gray-900 dark:text-white">
                                                     ${orderGroup.total.toFixed(2)}
                                                 </h5>

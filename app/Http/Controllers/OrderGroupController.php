@@ -99,9 +99,31 @@ class OrderGroupController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OrderGroup $orderGroup)
+    public function show(OrderGroup $orderGroup): Response
     {
-        //
+        $orderGroup->load([
+            'orderItems.variant:id,dish_id,name,price',
+            'orderItems.variant.dish:id,name',
+            'invoice:id,client,order_group_id'
+        ]);
+
+        return Inertia::render('OrderGroups/Show', [
+            'orderGroup' => [
+                'id' => $orderGroup->id,
+                'invoice' => $orderGroup->invoice,
+                'apply_invoice' => $orderGroup->apply_invoice,
+                'delivery_type' => $orderGroup->delivery_type,
+                'status' => $orderGroup->status,
+                'total' => $orderGroup->total,
+                'orderItems' => $orderGroup->orderItems->map(function ($orderItem) {
+                    return [
+                        'id' => $orderItem->id,
+                        'variant' => $orderItem->variant,
+                        'quantity' => $orderItem->quantity,
+                    ];
+                })->toArray()
+            ]
+        ]);
     }
 
     /**
