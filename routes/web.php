@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
         'index', 'create', 'store', 'show'
     ]);
     Route::resource('inventory-groups', InventoryGroupController::class)->only([
-        'index', 'show'
+        'index', 'show', 'edit', 'update', 'destroy', 'create', 'store'
     ]);
     Route::resource('invoices', InvoiceController::class);
 });

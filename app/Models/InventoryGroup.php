@@ -18,6 +18,11 @@ class InventoryGroup extends Model
         self::PIZZA_TYPE
     ];
 
+    protected $fillable = [
+        'type',
+        'date'
+    ];
+
     public function inventoryItems(): HasMany
     {
         return $this->hasMany(InventoryItem::class);

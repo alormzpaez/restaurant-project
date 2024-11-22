@@ -21,6 +21,15 @@ class InventoryItem extends Model
         self::UNAVAILABLE_STATUS
     ];
 
+    protected $fillable = [
+        'inventory_itemable_type',
+        'inventory_itemable_id',
+        'remaining_quantity',
+        'made_quantity',
+        'useful_quantity',
+        'sold_quantity',
+    ];
+
     public function inventoryGroup(): BelongsTo
     {
         return $this->belongsTo(InventoryGroup::class);
