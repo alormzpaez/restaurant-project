@@ -7,6 +7,7 @@ import { IoReturnUpBackOutline } from 'react-icons/io5';
 import KitchenInventoryGroupShow from './Partials/KitchenInventoryGroupShow';
 import PizzaInventoryGroupShow from './Partials/PizzaInventoryGroupShow';
 import PizzaInventoryGroupEdit from './Partials/PizzaInventoryGroupEdit';
+import KitchenInventoryGroupEdit from './Partials/KitchenInventoryGroupEdit';
 
 function Edit({
     inventoryGroup
@@ -44,7 +45,7 @@ function Edit({
                             <br />
 
                             {inventoryGroup.type == 'kitchen' ? (
-                                <KitchenInventoryGroupShow inventoryGroup={inventoryGroup} />
+                                <KitchenInventoryGroupEdit inventoryGroup={inventoryGroup} />
                             ) : (
                                 <PizzaInventoryGroupEdit inventoryGroup={inventoryGroup} />
                             )}

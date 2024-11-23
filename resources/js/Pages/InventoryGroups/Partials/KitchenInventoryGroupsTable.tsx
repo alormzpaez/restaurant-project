@@ -1,5 +1,5 @@
 import { InventoryGroup } from '@/types';
-import { router } from '@inertiajs/react';
+import { router, useForm } from '@inertiajs/react';
 import { Button, Table } from 'flowbite-react';
 import { FaEdit } from 'react-icons/fa';
 import { IoReturnUpBackOutline } from 'react-icons/io5';
@@ -12,6 +12,18 @@ export default function KitchenInventoryGroupsTable({
     inventoryGroups: InventoryGroup[];
     returnBack: () => void;
 }) {
+    const {
+        delete: destroy,
+        errors,
+        processing,
+    } = useForm();
+
+    const submitDestroy = (inventoryGroupId: number) => {
+        destroy(route("inventory-groups.destroy", inventoryGroupId), {
+            preserveScroll: true
+        });
+    };
+
     return (
         <div className="w-full overflow-x-auto">
             <div className="flex items-center gap-5">
@@ -59,10 +71,23 @@ export default function KitchenInventoryGroupsTable({
                                 >
                                     Ver
                                 </Button>
-                                <Button size="xs" outline color="red">
+                                <Button size="xs" outline color="red" onClick={() => {
+                                    let answer = confirm('¿Estás seguro de eliminar?')
+
+                                    if (answer) {
+                                        submitDestroy(inventoryGroup.id)
+                                    }
+                                }}>
                                     <MdDelete className="w-6 h-6" />
                                 </Button>
-                                <Button size="xs" outline color="yellow">
+                                <Button size="xs" outline color="yellow" onClick={() => {
+                                    router.visit(
+                                        route(
+                                            'inventory-groups.edit',
+                                            inventoryGroup.id,
+                                        ),
+                                    );
+                                }}>
                                     <FaEdit className="w-6 h-6" />
                                 </Button>
                             </Table.Cell>
@@ -73,7 +98,17 @@ export default function KitchenInventoryGroupsTable({
 
             <br />
 
-            <Button>Agregar</Button>
+            <Button onClick={() => {
+                router.visit(
+                    route(
+                        'inventory-groups.create', {
+                            query: {
+                                type: "kitchen"
+                            }
+                        }
+                    ),
+                );
+            }}>Agregar</Button>
         </div>
     );
 }

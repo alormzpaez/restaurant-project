@@ -93,11 +93,6 @@ export default function KitchenInventoryGroupShow({
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
-                            </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell className="font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -121,11 +116,6 @@ export default function KitchenInventoryGroupShow({
                                         inventoryGroup.pollo_useful_quantity
                                     }
                                 />
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
                             </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -151,11 +141,6 @@ export default function KitchenInventoryGroupShow({
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
-                            </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell className="font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -179,11 +164,6 @@ export default function KitchenInventoryGroupShow({
                                         inventoryGroup.panHams_useful_quantity
                                     }
                                 />
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
                             </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -209,11 +189,6 @@ export default function KitchenInventoryGroupShow({
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
-                            </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell className="font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -237,11 +212,6 @@ export default function KitchenInventoryGroupShow({
                                         inventoryGroup.papas_useful_quantity
                                     }
                                 />
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
                             </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -267,11 +237,6 @@ export default function KitchenInventoryGroupShow({
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
-                            </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell className="font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -295,11 +260,6 @@ export default function KitchenInventoryGroupShow({
                                         inventoryGroup.molida_useful_quantity
                                     }
                                 />
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
                             </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -325,11 +285,6 @@ export default function KitchenInventoryGroupShow({
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
-                            </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell className="font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -353,11 +308,6 @@ export default function KitchenInventoryGroupShow({
                                         inventoryGroup.pastor_useful_quantity
                                     }
                                 />
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
                             </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -383,11 +333,6 @@ export default function KitchenInventoryGroupShow({
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
-                            </Table.Cell>
                         </Table.Row>
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell className="font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -412,16 +357,11 @@ export default function KitchenInventoryGroupShow({
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
-                                <Button size="xs" outline color="yellow">
-                                    <FaEdit className="w-6 h-6" />
-                                </Button>
-                            </Table.Cell>
                         </Table.Row>
                     </Table.Body>
                 </Table>
             </div>
-            <Button>Guardar resumen</Button>
+            {/* <Button>Guardar resumen</Button> */}
         </div>
     );
 }

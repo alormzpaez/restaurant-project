@@ -8,6 +8,7 @@ import KitchenInventoryGroupShow from './Partials/KitchenInventoryGroupShow';
 import PizzaInventoryGroupShow from './Partials/PizzaInventoryGroupShow';
 import PizzaInventoryGroupEdit from './Partials/PizzaInventoryGroupEdit';
 import PizzaInventoryGroupCreate from './Partials/PizzaInventoryGroupCreate';
+import KitchenInventoryGroupCreate from './Partials/KitchenInventoryGroupCreate';
 
 function Create({
     query
@@ -49,8 +50,7 @@ function Create({
                             <br />
 
                             {query.query?.type == 'kitchen' ? (
-                                // <KitchenInventoryGroupShow inventoryGroup={inventoryGroup} />
-                                null
+                                <KitchenInventoryGroupCreate />
                             ) : (
                                 <PizzaInventoryGroupCreate />
                             )}
