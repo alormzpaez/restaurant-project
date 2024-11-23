@@ -216,9 +216,9 @@ function Show({
                                         }}>
                                             Cerrar
                                         </Button>
-                                        <Button>
-                                            Enviar por correo
-                                        </Button>
+                                        {/* <Button>
+                                            Descargar
+                                        </Button> */}
                                     </div>
                                 </div>
                             </div>

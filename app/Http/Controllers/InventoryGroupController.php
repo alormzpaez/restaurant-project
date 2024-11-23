@@ -153,6 +153,11 @@ class InventoryGroupController extends Controller
             ]);
             $inventoryGroup->inventoryItems()->create([
                 'inventory_itemable_type' => Dish::class,
+                'inventory_itemable_id' => $baguette->id,
+                'sold_quantity' => $request['baguette_sold_quantity'],
+            ]);
+            $inventoryGroup->inventoryItems()->create([
+                'inventory_itemable_type' => Dish::class,
                 'inventory_itemable_id' => $pasta->id,
                 'sold_quantity' => $request['pasta_sold_quantity'],
             ]);

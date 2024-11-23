@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('order-groups', OrderGroupController::class)->only([
-        'index', 'create', 'store', 'show'
+        'index', 'create', 'store', 'show', 'update'
     ]);
     Route::resource('inventory-groups', InventoryGroupController::class)->only([
         'index', 'show', 'edit', 'update', 'destroy', 'create', 'store'

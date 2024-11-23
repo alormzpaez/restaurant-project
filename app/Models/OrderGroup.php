@@ -36,7 +36,8 @@ class OrderGroup extends Model
         'apply_invoice',
         'total',
         'delivery_type',
-        'payment_method'
+        'payment_method',
+        'status'
     ];
 
     /**

@@ -66,7 +66,11 @@ function Index({
                                                         outline
                                                         color="red"
                                                         onClick={() => {
-                                                            submitDestroy(invoice.id)
+                                                            let answer = confirm('¿Estás seguro de eliminar este elemento?')
+
+                                                            if (answer) {
+                                                                submitDestroy(invoice.id)
+                                                            }
                                                         }}
                                                     >
                                                         <MdDelete className="w-6 h-6" />

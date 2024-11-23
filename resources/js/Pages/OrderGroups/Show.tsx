@@ -4,11 +4,29 @@ import OrderItemCard from '@/Components/OrderGroups/OrderItemCard';
 import TextInput from '@/Components/TextInput';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { OrderGroup, PageProps } from '@/types';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import { Button, Card, Label, Navbar, Radio } from 'flowbite-react';
-import { ReactElement } from 'react';
+import { FormEventHandler, ReactElement } from 'react';
 
 function Show({ orderGroup }: PageProps<{ orderGroup: OrderGroup }>) {
+    const { data, setData, put, processing, errors, reset } = useForm({
+        status: orderGroup.status,
+    });
+
+    const submit = () => {
+        if (data.status !== orderGroup.status) {
+            put(route('order-groups.update', orderGroup.id), {
+                // data: {
+                //     hola: 1
+                // }
+                // data: {
+                //     status: 12
+                // }
+                // onFinish: () => reset('password'),
+            });
+        }
+    };
+
     return (
         <>
             <Head title="Pedido" />
@@ -171,14 +189,20 @@ function Show({ orderGroup }: PageProps<{ orderGroup: OrderGroup }>) {
 
                                     <Button
                                         className="self-center w-1/2"
-                                        // onClick={submitStoreOrderGroup}
+                                        onClick={() => {
+                                            setData('status', 'finished')
+                                            submit()
+                                        }}
                                     >
                                         Finalizar pedido
                                     </Button>
                                     <Button
                                         className="self-center w-1/2"
                                         outline
-                                        // onClick={submitStoreOrderGroup}
+                                        onClick={() => {
+                                            setData('status', 'cancelled')
+                                            submit()
+                                        }}
                                     >
                                         Cancelar pedido
                                     </Button>

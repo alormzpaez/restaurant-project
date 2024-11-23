@@ -214,9 +214,9 @@ function Create({
                                         }}>
                                             Cerrar
                                         </Button>
-                                        <Button>
+                                        {/* <Button>
                                             Enviar por correo
-                                        </Button>
+                                        </Button> */}
                                     </div>
                                 </div>
                             </div>

@@ -139,7 +139,11 @@ class OrderGroupController extends Controller
      */
     public function update(Request $request, OrderGroup $orderGroup)
     {
-        //
+        $orderGroup->update([
+            'status' => $request['status']
+        ]);
+
+        return to_route('order-groups.index');
     }
 
     /**
